@@ -24,6 +24,7 @@ final class SessionViewModel {
     var webUrl: URL?
     var imageUrl: URL?
     let trackName: String
+    var useAdditionalContent = false
 
     private var disposeBag = DisposeBag()
 

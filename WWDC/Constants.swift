@@ -12,7 +12,7 @@ struct Constants {
 
     static let coreSchemaVersion: UInt64 = 44
 
-    static let thumbnailHeight: CGFloat = 150
+    static let thumbnailHeight: CGFloat = 550
 
     static let autorefreshInterval: TimeInterval = 5 * 60
 

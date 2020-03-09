@@ -13,6 +13,7 @@ import RxCocoa
 final class SessionCellView: NSView {
 
     private var disposeBag = DisposeBag()
+    private var contentHeightConstraint: NSLayoutConstraint?
 
     var viewModel: SessionViewModel? {
         didSet {
@@ -20,6 +21,8 @@ final class SessionCellView: NSView {
 
             thumbnailImageView.image = #imageLiteral(resourceName: "noimage")
             bindUI()
+            let height: CGFloat = viewModel?.useAdditionalContent == true ? 150 : 0
+//            animateHeightConstraint(to: height)
         }
     }
 
@@ -180,6 +183,15 @@ final class SessionCellView: NSView {
 
         return v
     }()
+    
+    private lazy var contentContainer: NSView = {
+        let v = NSView(frame: .zero)
+        
+        v.wantsLayer = true
+        v.layer?.backgroundColor = NSColor.red.cgColor
+        
+        return v
+    }()
 
     private lazy var favoritedImageView: WWDCImageView = {
         let v = WWDCImageView()
@@ -224,18 +236,20 @@ final class SessionCellView: NSView {
         snowFlakeView.translatesAutoresizingMaskIntoConstraints = false
         textStackView.translatesAutoresizingMaskIntoConstraints = false
         iconsStackView.translatesAutoresizingMaskIntoConstraints = false
+        contentContainer.translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(contextColorView)
         addSubview(thumbnailImageView)
         addSubview(snowFlakeView)
         addSubview(textStackView)
         addSubview(iconsStackView)
+        addSubview(contentContainer)
 
         contextColorView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
-        contextColorView.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
-        contextColorView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        contextColorView.topAnchor.constraint(equalTo: thumbnailImageView.topAnchor).isActive = true
+        contextColorView.bottomAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor).isActive = true
 
-        thumbnailImageView.centerYAnchor.constraint(equalTo: contextColorView.centerYAnchor).isActive = true
+        thumbnailImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
         thumbnailImageView.leadingAnchor.constraint(equalTo: contextColorView.trailingAnchor, constant: 8).isActive = true
         snowFlakeView.centerYAnchor.constraint(equalTo: thumbnailImageView.centerYAnchor).isActive = true
         snowFlakeView.centerXAnchor.constraint(equalTo: thumbnailImageView.centerXAnchor).isActive = true
@@ -247,9 +261,36 @@ final class SessionCellView: NSView {
         iconsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4).isActive = true
         iconsStackView.topAnchor.constraint(equalTo: textStackView.topAnchor).isActive = true
         iconsStackView.bottomAnchor.constraint(equalTo: textStackView.bottomAnchor).isActive = true
-
+        
+        let const = contentContainer.heightAnchor.constraint(equalToConstant: 80)
+        const.isActive = true
+        contentContainer.topAnchor.constraint(equalTo: thumbnailImageView.bottomAnchor, constant: 8).isActive = true
+        contentContainer.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        contentContainer.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        contentContainer.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                self.animateHeightConstraint(to: 150)
+//            }
+//
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+//                self.animateHeightConstraint(to: 20)
+//            }
+                
         downloadedImageView.isHidden = true
         favoritedImageView.isHidden = true
+        self.contentHeightConstraint = const
+    }
+    
+    func animateHeightConstraint(to height: CGFloat) {
+        NSAnimationContext.runAnimationGroup({context in
+            context.duration = 0.3
+            context.allowsImplicitAnimation = true
+            
+            self.contentHeightConstraint?.constant = height
+            self.layoutSubtreeIfNeeded()
+            
+        }, completionHandler: nil)
     }
 
 }

@@ -358,8 +358,9 @@ class SessionsTableViewController: NSViewController, NSMenuItemValidation {
         v.allowsMultipleSelection = true
         v.backgroundColor = .listBackground
         v.headerView = nil
-        v.rowHeight = Metrics.sessionRowHeight
-        v.autoresizingMask = [.width, .height]
+//        v.rowHeight = Metrics.sessionRowHeight
+        v.usesAutomaticRowHeights = true
+        v.autoresizingMask = [.width]
         v.floatsGroupRows = true
         v.gridStyleMask = .solidHorizontalGridLineMask
         v.gridColor = .darkGridColor
@@ -542,7 +543,7 @@ extension SessionsTableViewController: NSTableViewDataSource, NSTableViewDelegat
 
     fileprivate struct Metrics {
         static let headerRowHeight: CGFloat = 20
-        static let sessionRowHeight: CGFloat = 64
+        static let sessionRowHeight: CGFloat = 164
     }
 
     private struct Constants {
@@ -592,6 +593,7 @@ extension SessionsTableViewController: NSTableViewDataSource, NSTableViewDelegat
             cell?.identifier = NSUserInterfaceItemIdentifier(rawValue: Constants.sessionCellIdentifier)
         }
 
+        viewModel.useAdditionalContent = true
         cell?.viewModel = viewModel
 
         return cell
