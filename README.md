@@ -18,7 +18,7 @@ Watch this year's videos as they're released and access videos from previous yea
 
 ### Video features
 
-- Watch videos in 0.5x, 1x, 1.5x or 2x speeds
+- Watch videos in 0.5x, 1x, 1.25x, 1.5x, 1.75x or 2x speeds
 - Fullscreen and native picture-in-picture support
 - Navigate video contents easily with the help of transcripts
 
@@ -42,7 +42,7 @@ With version 6.0, you can try out our new iCloud sync feature. Enable the featur
 
 ## Sharing
 
-You can easily share links to sessions or videos by using the share button. The links shared are for Apple's developer website, but the app can open these links if you drag them into the icon (or if you use [BrowserFreedom](https://getbrowserfreedom.com)).
+You can easily share links to sessions or videos by using the share button. The links shared are for Apple's developer website, but the app can open these links if you drag them into the icon. You can also handoff content from your Mac to the Apple Developer app on iOS.
 
 ## Nerdy bits 🤓
 
