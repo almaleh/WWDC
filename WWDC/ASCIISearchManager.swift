@@ -18,9 +18,13 @@ enum ASCIIResultError: Error {
 final class ASCIISearchManager {
     
     static let shared = ASCIISearchManager()
+    
     private let cache = NSCache<NSString, ASCIICachedResults>()
-    private let cacheQueue = DispatchQueue(label: "io.wwdc.ascii.cache")
     private let baseURL = "https://asciiwwdc.com/search?q="
+    private var debouncedDispatch: DispatchWorkItem?
+    
+    private let cacheQueue = DispatchQueue(label: "io.wwdc.ascii.cache")
+    private let debounceQueue = DispatchQueue(label: "io.wwdc.ascii.debounce")
     
     private init() {}
     
@@ -32,8 +36,6 @@ final class ASCIISearchManager {
                 return
             }
         }
-        
-        // TODO: dispatchItem
         
         let endpoint = baseURL + "\(query)"
         
@@ -86,6 +88,22 @@ final class ASCIISearchManager {
             }
         }
         
-        task.resume()
+        debounce(task: task)
+    }
+    
+    func debounce(task: URLSessionTask, time: TimeInterval = 0.5) {
+        self.debouncedDispatch?.cancel()
+        let debouncedDispatch = DispatchWorkItem { task.resume() }
+        debounceQueue.asyncAfter(deadline: .now() + time, execute: debouncedDispatch)
+        self.debouncedDispatch = debouncedDispatch
+    }
+}
+
+// Used for NSCache
+class ASCIICachedResults {
+    let results: ASCIIResults
+    
+    init(results: ASCIIResults) {
+        self.results = results
     }
 }

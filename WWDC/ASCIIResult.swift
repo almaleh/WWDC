@@ -23,12 +23,3 @@ struct ASCIIResults: Codable {
     let results: [Result]
     
 }
-
-// Used for NSCache
-class ASCIICachedResults {
-    let results: ASCIIResults
-    
-    init(results: ASCIIResults) {
-        self.results = results
-    }
-}
