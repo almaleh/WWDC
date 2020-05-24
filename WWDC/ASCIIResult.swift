@@ -2,7 +2,7 @@
 //  ASCIIResult.swift
 //  WWDC
 //
-//  Created by Besher on 2020-05-20.
+//  Created by Besher Al Maleh on 2020-05-20.
 //  Copyright © 2020 Guilherme Rambo. All rights reserved.
 //
 
@@ -22,4 +22,13 @@ struct ASCIIResults: Codable {
     let query: String
     let results: [Result]
     
+}
+
+// Used for NSCache
+class ASCIICachedResults {
+    let results: ASCIIResults
+    
+    init(results: ASCIIResults) {
+        self.results = results
+    }
 }

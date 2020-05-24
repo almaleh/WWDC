@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		012BEFA41EE8658F007E72CA /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 012BEFA31EE8658F007E72CA /* EventKit.framework */; };
 		01B3EB4A1EEDD23100DE1003 /* AppCoordinator+SessionTableViewContextMenuActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B3EB491EEDD23100DE1003 /* AppCoordinator+SessionTableViewContextMenuActions.swift */; };
-		28FF58B224762FFE002FA0F5 /* ASCIISearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FF58B124762FFE002FA0F5 /* ASCIISearchController.swift */; };
+		28FF58B224762FFE002FA0F5 /* ASCIISearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FF58B124762FFE002FA0F5 /* ASCIISearchManager.swift */; };
 		28FF58B424763155002FA0F5 /* ASCIIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FF58B324763155002FA0F5 /* ASCIIResult.swift */; };
 		3A0840B41F924665002BC828 /* Realm+InMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0840B31F924665002BC828 /* Realm+InMemory.swift */; };
 		3A6227031F9272A300D5F687 /* contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A6227021F9272A300D5F687 /* contents.json */; };
@@ -371,7 +371,7 @@
 /* Begin PBXFileReference section */
 		012BEFA31EE8658F007E72CA /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		01B3EB491EEDD23100DE1003 /* AppCoordinator+SessionTableViewContextMenuActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppCoordinator+SessionTableViewContextMenuActions.swift"; sourceTree = "<group>"; };
-		28FF58B124762FFE002FA0F5 /* ASCIISearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIISearchController.swift; sourceTree = "<group>"; };
+		28FF58B124762FFE002FA0F5 /* ASCIISearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIISearchManager.swift; sourceTree = "<group>"; };
 		28FF58B324763155002FA0F5 /* ASCIIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASCIIResult.swift; sourceTree = "<group>"; };
 		3A0840B31F924665002BC828 /* Realm+InMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+InMemory.swift"; sourceTree = "<group>"; };
 		3A6227021F9272A300D5F687 /* contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = contents.json; sourceTree = "<group>"; };
@@ -1127,7 +1127,7 @@
 			isa = PBXGroup;
 			children = (
 				DD90CDCC1ED7A5ED00CADE86 /* SearchCoordinator.swift */,
-				28FF58B124762FFE002FA0F5 /* ASCIISearchController.swift */,
+				28FF58B124762FFE002FA0F5 /* ASCIISearchManager.swift */,
 				DD90CDC71ED77A3900CADE86 /* SearchFiltersViewController.swift */,
 			);
 			name = Search;
@@ -1889,7 +1889,7 @@
 				DDC678191EDB2CD300A4E19C /* ActionLabel.swift in Sources */,
 				DD876D351EC2A7410058EE3B /* ImageDownloadCenter.swift in Sources */,
 				DD6E06F61EDBC379000EAEA4 /* WWDCBottomBorderView.swift in Sources */,
-				28FF58B224762FFE002FA0F5 /* ASCIISearchController.swift in Sources */,
+				28FF58B224762FFE002FA0F5 /* ASCIISearchManager.swift in Sources */,
 				DDAE001D1EC534BF0036C7E9 /* TrackColorView.swift in Sources */,
 				DD0159D91ED11A9800F980F1 /* ModalLoadingView.swift in Sources */,
 				DDF32EB31EBE5C4D0028E39D /* SessionActionsViewController.swift in Sources */,
